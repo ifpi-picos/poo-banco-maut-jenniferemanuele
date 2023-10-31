@@ -1,87 +1,88 @@
 public abstract class Conta {
- private int agencia;
- private int numeroAgencia;
- protected double saldo;
- private Cliente cliente; 
- protected Notificacao notificacao;
+    private int agencia;
+    private int numeroAgencia;
+    protected double saldo;
+    private Cliente cliente;
+    protected Notificacao notificacao;
+    // está faltando guardar o histórico de transações
 
- public Conta(int agencia, int numero, double saldo, Cliente cliente, Notificacao notificacao){
-     this.agencia = agencia;
-     this.numeroAgencia = numero;
-     this.saldo = saldo; 
-     this.cliente = cliente; 
-     this.notificacao = notificacao;
- }
+    public Conta(int agencia, int numero, double saldo, Cliente cliente, Notificacao notificacao) {
+        this.agencia = agencia;
+        this.numeroAgencia = numero;
+        this.saldo = saldo;
+        this.cliente = cliente;
+        this.notificacao = notificacao;
+    }
 
- 
-public boolean Deposita(double valor){
-     if(valor < 0){
-        this.saldo += valor;
-        System.out.println("Seu depósito é de " + valor + "R$");
-        System.out.println("Depósito realizado com sucesso. ");
-        notificacao.enviaNotificacao("Operação ", valor);
-        return true;
-        }
-        else{
+    // nomes de métodos não iniciam com letras maiúsculas.
+    public boolean Deposita(double valor) {
+        // essa validação está incorreta
+        if (valor < 0) {
+            this.saldo += valor;
+            System.out.println("Seu depósito é de " + valor + "R$");
+            System.out.println("Depósito realizado com sucesso. ");
+            notificacao.enviaNotificacao("Operação ", valor);
+            return true;
+        } else {
             System.out.println("Seu saldo é insuficiente ");
-            return false; 
-        
-        } 
-     }
+            return false;
 
- public abstract double Saca(double valor);
+        }
+    }
 
-
-public abstract void Transfere(double valor, Conta contaDestino);
-
-public Notificacao getNotificacao() {
-    return notificacao;
-}
+    public abstract double Saca(double valor);
 
 
-public int getAgencia() {
-    return agencia;
-}
+    public abstract void Transfere(double valor, Conta contaDestino);
+
+    public Notificacao getNotificacao() {
+        return notificacao;
+    }
 
 
-public void setAgencia(int agencia) {
-    this.agencia = agencia;
-}
+    public int getAgencia() {
+        return agencia;
+    }
 
 
-public int getNumeroAgencia() {
-    return numeroAgencia;
-}
+    public void setAgencia(int agencia) {
+        this.agencia = agencia;
+    }
 
 
-public void setNumeroAgencia(int numeroAgencia) {
-    this.numeroAgencia = numeroAgencia;
-}
+    public int getNumeroAgencia() {
+        return numeroAgencia;
+    }
 
 
-public double getSaldo() {
-    return saldo;
-}
+    public void setNumeroAgencia(int numeroAgencia) {
+        this.numeroAgencia = numeroAgencia;
+    }
 
 
-public void setSaldo(double saldo) {
-    this.saldo = saldo;
-}
+    public double getSaldo() {
+        return saldo;
+    }
 
 
-public Cliente getCliente() {
-    return cliente;
-}
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
 
 
-public void setCliente(Cliente cliente) {
-    this.cliente = cliente;
-}
+    public Cliente getCliente() {
+        return cliente;
+    }
 
 
-public void setNotificacao(Notificacao notificacao) {
-    this.notificacao = notificacao;
-}
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+
+    public void setNotificacao(Notificacao notificacao) {
+        this.notificacao = notificacao;
+    }
 
 
 }

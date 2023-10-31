@@ -3,28 +3,30 @@ import java.sql.Date;
 public class App {
     public static void main(String[] args) {
         Endereco endereco = new Endereco("Rua Antônio Bonfim", 183, "Junco", "Picos", "PI", null);
-        Cliente cliente1 = new Cliente("101.696.063-84", "Jennifer", new Date(2004, 03,29), endereco);
-        Conta contaCorrente = new ContaCorrente(994, 002, 500.00, "corrente", cliente1, new Email(), 50.00, 2);
-        Conta contaPoupanca = new ContaPoupanca(234, 004, 700.00, "poupança", cliente1, new Sms(),0.1);
+        Cliente cliente1 =
+                new Cliente("101.696.063-84", "Jennifer", new Date(2004, 03, 29), endereco);
+        Conta cc = new ContaCorrente(994, 002, 100.00, "corrente", cliente1, new Email(), 50.00, 2);
+        Conta cc2 =
+                new ContaCorrente(994, 002, 100.00, "corrente", cliente1, new Email(), 50.00, 2);
+        Conta cp = new ContaPoupanca(234, 004, 100.00, "poupança", cliente1, new Sms(), 0.1);
 
-        // Métodos da conta corrente
-        System.out.println("\n");
-        contaCorrente.Deposita(500);
-        System.out.println("\n");
-        contaCorrente.Saca(20);
-        System.out.println("\n");
-        contaCorrente.Transfere(400, contaPoupanca);
-        System.out.println("\n");
-        contaCorrente.Transfere(300, contaPoupanca);
-        System.out.println("\n");
-        contaCorrente.Transfere(30, contaPoupanca);
-        System.out.println("\n");
+        // nomes de métodos não iniciam com letras maiúsculas.
+        cc.Deposita(100); // não está funcionando
+        System.out.println(cc.getSaldo());
+        cc.Saca(50); // não está funcionando
+        System.out.println(cc.getSaldo());
+        cc.Transfere(10, cc2); // não está funcionando
+        cc.Transfere(10, cc2);
+        cc.Transfere(10, cc2);
+        cc.Transfere(10, cc2);
+        cc.Transfere(10, cc2);
+        cc.Transfere(10, cc2);
+        System.out.println(cc.getSaldo());
 
-        
-        contaPoupanca.Deposita(50);
-        System.out.println("\n");
-        contaPoupanca.Saca(140);
-        System.out.println("\n");
-        contaPoupanca.Transfere(20, contaCorrente);
+        cp.Deposita(100); // não está funcionando
+        System.out.println(cp.getSaldo());
+        cp.Saca(10);
+
+        System.out.println(cp.getSaldo());
     }
 }
